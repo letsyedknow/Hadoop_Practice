@@ -1,0 +1,59 @@
+Hadoop
+Resource Manager: http://localhost:9870
+JobTracker: http://localhost:8088/
+Node Specific Info: http://localhost:8042/
+
+1. Start either 
+
+/usr/local/Cellar/hadoop/3.2.1/sbin/ to start and stop hadoop services.
+
+$ ./start-dfs.sh# To stop HDFS service
+$ ./stop-dfs.sh
+
+
+Or hstart
+
+And stop
+hstop
+
+2. How to create a file in Hadoop
+
+Hadoop fs -mkdir /hadoopPrac
+
+3. To view the file 
+Hadoop fs -ls / 
+4. Transfer from local to Hadoop fs
+-put
+
+Hadoop fs -put local_file /filefromlocal
+hadoop fs -copyFromLocal hello.py /hadoopPrac/hello.py
+
+(From local source to Hadoop destination)
+
+5. View content inside the file 
+Hadoop fs -cat /filefromlocal
+
+6. Remove the file from Hadoop
+Hadoop fs -rm /filefromlocal
+7.Get from Hadoop to local
+hadoop fs -get /newhaddopPrac/newhello.py /local/newhello.py
+hadoop fs -copyToLocal /newhaddopPrac/newhello.py ./gethello.py
+8. Copy or move file from one path to another inside Hadoop
+Hadoop fs -cp /hadoop_path1 /hadoop_path2
+Hadoop fs -mv /hadoop-path1 /hadoop_path2
+
+9. Move from local to hadoop server path
+Hadoop fs -moveFromLocal <local_path> <hadoop_dest>
+
+10. MoveToLocal from hadoop
+Hadoop fs -moveToLocal <hadoop_path> <local_path>
+
+11. Empty the thrash
+hadoop fs -expunge
+12. To know disk usage
+hadoop fs -du /
+13. To know data availability
+Hadoop fs -df /
+
+14. Filesystem health check
+Hadoop fsck /hadoopPrac
